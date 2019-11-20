@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MmkvApplication</string>
+    <string name="tv_title_text">Mmkv与SP执行10000次耗时对比</string>
+</resources>
