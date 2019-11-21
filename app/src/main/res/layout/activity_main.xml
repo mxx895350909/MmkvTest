@@ -1,90 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:text="@string/tv_title_text" />
-
-    <TextView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tv_put"
-        android:textColor="#ff6633"
-        android:textSize="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_marginTop="10dp"
-        android:id="@+id/tv_get"
-        android:textColor="#ff6633"
-        android:textSize="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <Button
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:id="@+id/btn_string"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:text="String耗时对比" />
+            android:gravity="center"
+            android:text="@string/tv_title_text"
+            android:textSize="20dp" />
 
-        <Button
+        <TextView
+            android:id="@+id/tv_put"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:id="@+id/btn_boolean"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:text="Boolean耗时对比" />
+            android:textColor="#ff6633"
+            android:textSize="16dp" />
 
-        <Button
+        <TextView
+            android:id="@+id/tv_get"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:id="@+id/btn_int"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:text="int耗时对比" />
+            android:textColor="#ff6633"
+            android:textSize="16dp" />
 
-        <Button
+        <TextView
+            android:id="@+id/tv_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:id="@+id/btn_float"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:text="Float耗时对比" />
+            android:textColor="#ff6633"
+            android:textSize="16dp" />
 
-        <Button
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:id="@+id/btn_long"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:text="Long耗时对比" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-        <Button
-            android:layout_marginTop="10dp"
-            android:id="@+id/btn_object"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:text="Object耗时对比" />
+            <Button
+                android:id="@+id/btn_all"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text="全部类型耗时对比" />
 
+            <Button
+                android:id="@+id/btn_string"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text="String耗时对比" />
 
+            <Button
+                android:id="@+id/btn_boolean"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Boolean耗时对比" />
 
+            <Button
+                android:id="@+id/btn_int"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text="int耗时对比" />
+
+            <Button
+                android:id="@+id/btn_float"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Float耗时对比" />
+
+            <Button
+                android:id="@+id/btn_long"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Long耗时对比" />
+
+            <Button
+                android:id="@+id/btn_object"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Object耗时对比" />
+        </LinearLayout>
 
     </LinearLayout>
 
 
-
-
-</LinearLayout>
+</ScrollView>

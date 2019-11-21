@@ -3,12 +3,14 @@ package com.example.maxiaoxun.mmkvapplication;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
+    private static final String TAG = "MainActivityTAG";
     private static final int TEST_TIMES = 10000;
     private static final String TEST_KEY_STRING = "test_key_string";
     private static final String TEST_VALUE_STRING = "test_value_string";
@@ -31,8 +33,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Button btnFloat;
     private Button btnLong;
     private Button btnObject;
-    private TextView tvPutString;
-    private TextView tvGetString;
+    private Button btnAll;
+    private TextView tvPut;
+    private TextView tvGet;
+    private TextView tvAll;
+
+    private String allUseTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +51,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void initView() {
         tvTitle = findViewById(R.id.tv_title);
-        tvPutString = findViewById(R.id.tv_put);
-        tvGetString = findViewById(R.id.tv_get);
+        tvPut = findViewById(R.id.tv_put);
+        tvGet = findViewById(R.id.tv_get);
+        tvAll = findViewById(R.id.tv_all);
         btnString = findViewById(R.id.btn_string);
         btnBoolean = findViewById(R.id.btn_boolean);
         btnInt = findViewById(R.id.btn_int);
         btnFloat = findViewById(R.id.btn_float);
         btnLong = findViewById(R.id.btn_long);
         btnObject = findViewById(R.id.btn_object);
+        btnAll = findViewById(R.id.btn_all);
 
         tvTitle.setText("Mmkv与SP执行" + TEST_TIMES + "次耗时对比");
 
@@ -68,6 +76,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnFloat.setOnClickListener(this);
         btnLong.setOnClickListener(this);
         btnObject.setOnClickListener(this);
+        btnAll.setOnClickListener(this);
     }
 
     @Override
@@ -91,11 +100,28 @@ public class MainActivity extends Activity implements View.OnClickListener {
         } else if (id == R.id.btn_object) {
             putObjectClick();
             getObjectClick();
+        } else if (id == R.id.btn_all) {
+            tvAll.setText("运行中。。。");
+            allUseTime = "";
+            putStringClick();
+            getStringClick();
+            putBooleanClick();
+            getBooleanClick();
+            putIntClick();
+            getIntClick();
+            putFloatClick();
+            getFloatClick();
+            putLongClick();
+            getLongClick();
+            putObjectClick();
+            getObjectClick();
+            tvAll.setText(allUseTime);
         }
 
     }
 
     private void putStringClick() {
+        tvPut.setText("运行中。。。");
         long mmkvStartTime = SystemClock.elapsedRealtime();
         for (int i = 0; i < TEST_TIMES; i++) {
             MmkvUtil.getInstance().putString(TEST_KEY_STRING, TEST_VALUE_STRING);
@@ -114,7 +140,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         stringBuilder.append(" , ");
         stringBuilder.append("SP耗时：");
         stringBuilder.append(spUseTime);
-        tvPutString.setText(stringBuilder.toString());
+        tvPut.setText(stringBuilder.toString());
+        Log.e(TAG, stringBuilder.toString());
+        allUseTime = allUseTime + stringBuilder.toString() + "\n";
     }
 
     private void getStringClick() {
@@ -136,10 +164,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
         stringBuilder.append(" , ");
         stringBuilder.append("SP耗时：");
         stringBuilder.append(spUseTime);
-        tvGetString.setText(stringBuilder.toString());
+        tvGet.setText(stringBuilder.toString());
+        Log.e(TAG, stringBuilder.toString());
+        allUseTime = allUseTime + stringBuilder.toString() + "\n";
     }
 
     private void putBooleanClick() {
+        tvPut.setText("运行中。。。");
         long mmkvStartTime = SystemClock.elapsedRealtime();
         for (int i = 0; i < TEST_TIMES; i++) {
             MmkvUtil.getInstance().putBoolean(TEST_KEY_BOOLEAN, TEST_VALUE_BOOLEAN);
@@ -158,7 +189,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         stringBuilder.append(" , ");
         stringBuilder.append("SP耗时：");
         stringBuilder.append(spUseTime);
-        tvPutString.setText(stringBuilder.toString());
+        tvPut.setText(stringBuilder.toString());
+        Log.e(TAG, stringBuilder.toString());
+        allUseTime = allUseTime + stringBuilder.toString() + "\n";
     }
 
     private void getBooleanClick() {
@@ -180,10 +213,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
         stringBuilder.append(" , ");
         stringBuilder.append("SP耗时：");
         stringBuilder.append(spUseTime);
-        tvGetString.setText(stringBuilder.toString());
+        tvGet.setText(stringBuilder.toString());
+        Log.e(TAG, stringBuilder.toString());
+        allUseTime = allUseTime + stringBuilder.toString() + "\n";
     }
 
     private void putIntClick() {
+        tvPut.setText("运行中。。。");
         long mmkvStartTime = SystemClock.elapsedRealtime();
         for (int i = 0; i < TEST_TIMES; i++) {
             MmkvUtil.getInstance().putInt(TEST_KEY_INT, TEST_VALUE_INT);
@@ -202,7 +238,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         stringBuilder.append(" , ");
         stringBuilder.append("SP耗时：");
         stringBuilder.append(spUseTime);
-        tvPutString.setText(stringBuilder.toString());
+        tvPut.setText(stringBuilder.toString());
+        Log.e(TAG, stringBuilder.toString());
+        allUseTime = allUseTime + stringBuilder.toString() + "\n";
     }
 
     private void getIntClick() {
@@ -224,10 +262,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
         stringBuilder.append(" , ");
         stringBuilder.append("SP耗时：");
         stringBuilder.append(spUseTime);
-        tvGetString.setText(stringBuilder.toString());
+        tvGet.setText(stringBuilder.toString());
+        Log.e(TAG, stringBuilder.toString());
+        allUseTime = allUseTime + stringBuilder.toString() + "\n";
     }
 
     private void putFloatClick() {
+        tvPut.setText("运行中。。。");
         long mmkvStartTime = SystemClock.elapsedRealtime();
         for (int i = 0; i < TEST_TIMES; i++) {
             MmkvUtil.getInstance().putFloat(TEST_KEY_FLOAT, TEST_VALUE_FLOAT);
@@ -246,7 +287,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         stringBuilder.append(" , ");
         stringBuilder.append("SP耗时：");
         stringBuilder.append(spUseTime);
-        tvPutString.setText(stringBuilder.toString());
+        tvPut.setText(stringBuilder.toString());
+        Log.e(TAG, stringBuilder.toString());
+        allUseTime = allUseTime + stringBuilder.toString() + "\n";
     }
 
     private void getFloatClick() {
@@ -268,10 +311,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
         stringBuilder.append(" , ");
         stringBuilder.append("SP耗时：");
         stringBuilder.append(spUseTime);
-        tvGetString.setText(stringBuilder.toString());
+        tvGet.setText(stringBuilder.toString());
+        Log.e(TAG, stringBuilder.toString());
+        allUseTime = allUseTime + stringBuilder.toString() + "\n";
     }
 
     private void putLongClick() {
+        tvPut.setText("运行中。。。");
         long mmkvStartTime = SystemClock.elapsedRealtime();
         for (int i = 0; i < TEST_TIMES; i++) {
             MmkvUtil.getInstance().putLong(TEST_KEY_LONG, TEST_VALUE_LONG);
@@ -290,7 +336,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         stringBuilder.append(" , ");
         stringBuilder.append("SP耗时：");
         stringBuilder.append(spUseTime);
-        tvPutString.setText(stringBuilder.toString());
+        tvPut.setText(stringBuilder.toString());
+        Log.e(TAG, stringBuilder.toString());
+        allUseTime = allUseTime + stringBuilder.toString() + "\n";
     }
 
     private void getLongClick() {
@@ -312,10 +360,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
         stringBuilder.append(" , ");
         stringBuilder.append("SP耗时：");
         stringBuilder.append(spUseTime);
-        tvGetString.setText(stringBuilder.toString());
+        tvGet.setText(stringBuilder.toString());
+        Log.e(TAG, stringBuilder.toString());
+        allUseTime = allUseTime + stringBuilder.toString() + "\n";
     }
 
     private void putObjectClick() {
+        tvPut.setText("运行中。。。");
         long mmkvStartTime = SystemClock.elapsedRealtime();
         for (int i = 0; i < TEST_TIMES; i++) {
             MmkvUtil.getInstance().putObject(TEST_KEY_OBJECT, TEST_VALUE_OBJECT);
@@ -334,7 +385,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         stringBuilder.append(" , ");
         stringBuilder.append("SP耗时：");
         stringBuilder.append(spUseTime);
-        tvPutString.setText(stringBuilder.toString());
+        tvPut.setText(stringBuilder.toString());
+        Log.e(TAG, stringBuilder.toString());
+        allUseTime = allUseTime + stringBuilder.toString() + "\n";
     }
 
     private void getObjectClick() {
@@ -356,6 +409,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         stringBuilder.append(" , ");
         stringBuilder.append("SP耗时：");
         stringBuilder.append(spUseTime);
-        tvGetString.setText(stringBuilder.toString());
+        tvGet.setText(stringBuilder.toString());
+        Log.e(TAG, stringBuilder.toString());
+        allUseTime = allUseTime + stringBuilder.toString() + "\n";
     }
 }
