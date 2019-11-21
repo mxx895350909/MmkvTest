@@ -100,31 +100,26 @@ public class MmkvUtil {
 
     public MmkvUtil putString(String key, String value) {
         mMkv.putString(key, value);
-        mMkv.commit();
         return this;
     }
 
     public MmkvUtil putInt(String key, int value) {
         mMkv.putInt(key, value);
-        mMkv.commit();
         return this;
     }
 
     public MmkvUtil putFloat(String key, float value) {
         mMkv.putFloat(key, value);
-        mMkv.commit();
         return this;
     }
 
     public MmkvUtil putLong(String key, long value) {
         mMkv.putLong(key, value);
-        mMkv.commit();
         return this;
     }
 
     public MmkvUtil putBoolean(String key, boolean value) {
         mMkv.putBoolean(key, value);
-        mMkv.commit();
         return this;
     }
 
@@ -134,7 +129,6 @@ public class MmkvUtil {
 
     public MmkvUtil putStringSet(String key, Set<String> value) {
         mMkv.putStringSet(key, value);
-        mMkv.commit();
         return this;
     }
 
@@ -146,7 +140,6 @@ public class MmkvUtil {
             out.writeObject(object);
             String objectVal = new String(Base64.encode(baos.toByteArray(), Base64.DEFAULT));
             mMkv.putString(key, objectVal);
-            mMkv.commit();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -197,13 +190,11 @@ public class MmkvUtil {
 
     public MmkvUtil remove(String key) {
         mMkv.remove(key);
-        mMkv.commit();
         return this;
     }
 
     public MmkvUtil removeAll() {
         mMkv.clear();
-        mMkv.commit();
         return this;
     }
 }
