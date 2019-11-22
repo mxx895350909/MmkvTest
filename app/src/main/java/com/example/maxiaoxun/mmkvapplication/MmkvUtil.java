@@ -21,20 +21,19 @@ import java.util.Set;
  */
 public class MmkvUtil {
 
-    private static MmkvUtil mmkvUtil;
     private static final String MMKV_PREFERENCES = "qk_app";
     private MMKV mMkv;
-    public Context context;
 
-    public synchronized static MmkvUtil getInstance() {
-        return mmkvUtil;
+    private MmkvUtil() {
+        mMkv = MMKV.mmkvWithID(MMKV_PREFERENCES, MMKV.SINGLE_PROCESS_MODE);
     }
 
-    public static void init(Context context) {
-        mmkvUtil = new MmkvUtil();
-        MMKV.initialize(context);
-        mmkvUtil.mMkv = MMKV.mmkvWithID(MMKV_PREFERENCES, MMKV.SINGLE_PROCESS_MODE);
-        mmkvUtil.context = context;
+    public static MmkvUtil getInstance() {
+        return Inner.instance;
+    }
+
+    private static class Inner {
+        private static final MmkvUtil instance = new MmkvUtil();
     }
 
     public void sp2mmkv(SharedPreferences sp) {
